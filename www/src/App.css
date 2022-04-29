@@ -1,0 +1,54 @@
+@import '~antd/dist/antd.css';
+
+.ant-layout-header, .ant-layout-footer {
+  height: 8vh;
+}
+.ant-layout-content {
+  height: 84vh;
+  background-color: #fff
+}
+
+.ant-layout-header {
+  z-index: 10;
+  background-color: #fff;
+  box-shadow: 0 2px 8px #f0f1f2;
+}
+
+#main {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+
+#operation-board {
+  width: 20%;
+}
+
+#image-board {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ant-image, .the-image {
+  height: 100%;
+}
+
+.divider {
+  width: 0;
+  border-left: 1px dashed rgba(0, 0, 0, 0.5);
+}
+
+#logo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0px 10px;
+}
+
+#logo > h1 {
+  height: 100%;
+}
