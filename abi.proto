@@ -23,9 +23,24 @@ message Blur {
   double sigma = 1;
 }
 
+message Brightness {
+  double brightness = 1;
+}
+
+message Contrast {
+  double contrast = 1;
+}
+
+message Gamma {
+  double gamma = 1;
+}
+
 message Spec {
   oneof data {
     Resize resize = 1;
     Blur blur = 2;
+    Brightness brightness = 3;
+    Contrast contrast = 4;
+    Gamma gamma = 5;
   }
 }

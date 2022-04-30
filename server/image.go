@@ -56,7 +56,11 @@ func getImgbuf(img image.Image) (*bytes.Buffer, string) {
 func printTestUrl() {
 	url := url.QueryEscape("http://localhost:8080/image/cache")
 	specs := &abi.Specs{}
-	specs.Push(abi.NewSpecBlur(2))
+	specs.Push(abi.NewSpecResize(1000, 1000, abi.Resize_Lanczos))
+	specs.Push(abi.NewSpecBrightness(1))
+	specs.Push(abi.NewSpecContrast(1))
+	specs.Push(abi.NewSpecGamma(1))
+	specs.Push(abi.NewSpecBlur(1))
 	specs_string, _ := abi.SpecsToString(specs)
 	fmt.Printf("http://localhost:8080/image/%v/%v\n", specs_string, url)
 }

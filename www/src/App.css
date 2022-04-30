@@ -52,3 +52,9 @@
 #logo > h1 {
   height: 100%;
 }
+
+.ant-layout-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

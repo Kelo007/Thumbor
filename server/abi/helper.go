@@ -32,6 +32,36 @@ func NewSpecBlur(sigma float64) *Spec {
 	}
 }
 
+func NewSpecBrightness(brightness float64) *Spec {
+	return &Spec{
+		Data: &Spec_Brightness{
+			Brightness: &Brightness{
+				Brightness: brightness,
+			},
+		},
+	}
+}
+
+func NewSpecContrast(contrast float64) *Spec {
+	return &Spec{
+		Data: &Spec_Contrast{
+			Contrast: &Contrast{
+				Contrast: contrast,
+			},
+		},
+	}
+}
+
+func NewSpecGamma(gamma float64) *Spec {
+	return &Spec{
+		Data: &Spec_Gamma{
+			Gamma: &Gamma{
+				Gamma: gamma,
+			},
+		},
+	}
+}
+
 func StringToSpecs(s string) (*Specs, error) {
 	bytes, err := base64.URLEncoding.DecodeString(s)
 	if err != nil {

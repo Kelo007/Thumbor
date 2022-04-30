@@ -8,5 +8,5 @@ proto:
 	protoc --go_out=. abi.proto
 	protoc --js_out=import_style=commonjs,binary:www/src abi.proto
 
-run:
+run: proto www
 	GIN_MODE=release go run ./server

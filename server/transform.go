@@ -10,6 +10,9 @@ import (
 
 type Resize abi.Resize
 type Blur abi.Blur
+type Brightness abi.Brightness
+type Contrast abi.Contrast
+type Gamma abi.Gamma
 
 type Transformer interface {
 	Transform(image.Image) image.Image
@@ -36,6 +39,18 @@ func (s *Blur) Transform(img image.Image) image.Image {
 	fmt.Printf("Blur... %v\n", s.Sigma)
 	return imaging.Blur(img, s.Sigma)
 }
+func (s *Brightness) Transform(img image.Image) image.Image {
+	fmt.Printf("Brightness... %v\n", s.Brightness)
+	return imaging.AdjustBrightness(img, s.Brightness)
+}
+func (s *Contrast) Transform(img image.Image) image.Image {
+	fmt.Printf("Contrast... %v\n", s.Contrast)
+	return imaging.AdjustContrast(img, s.Contrast)
+}
+func (s *Gamma) Transform(img image.Image) image.Image {
+	fmt.Printf("Gammma... %v\n", s.Gamma)
+	return imaging.AdjustGamma(img, s.Gamma)
+}
 
 func ToTransformer(spec *abi.Spec) Transformer {
 	switch s := spec.Data.(type) {
@@ -43,6 +58,12 @@ func ToTransformer(spec *abi.Spec) Transformer {
 		return (*Blur)(s.Blur)
 	case *abi.Spec_Resize:
 		return (*Resize)(s.Resize)
+	case *abi.Spec_Brightness:
+		return (*Brightness)(s.Brightness)
+	case *abi.Spec_Contrast:
+		return (*Contrast)(s.Contrast)
+	case *abi.Spec_Gamma:
+		return (*Gamma)(s.Gamma)
 	default:
 		return nil
 	}
